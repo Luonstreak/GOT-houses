@@ -1,24 +1,55 @@
+function spacing(arr){
+  var newArr = [];
+  for(var i = 0; i < arr.length; i++){
+    newArr.push(" " + '"' + arr[i] + '"');
+  }
+  return newArr;
+}
+
+function getHouse(i){
+  if(i == 1){
+    $.get('https://anapioficeandfire.com/api/houses/362', {type:'post'}, function(res){
+      $('.details p:nth-child(1)').text('Name: ' + '"' + res.name + '"');
+      $('.details p:nth-child(2)').text('Words: ' + '"' + res.words + '"');
+      $('.details p:nth-child(3)').text('Titles: ' + spacing(res.titles));
+      $('.details').css('color', 'rgba(35%, 35%, 35%, .8)');
+      console.log(res);
+    },'json');
+  }
+  if(i == 2){
+    $.get('https://anapioficeandfire.com/api/houses/378', {type:'post'}, function(res){
+      $('.details p:nth-child(1)').text('Name: ' + '"' + res.name + '"');
+      $('.details p:nth-child(2)').text('Words: ' + '"' + res.words + '"');
+      $('.details p:nth-child(3)').text('Titles: ' + spacing(res.titles));
+      $('.details').css('color', 'rgba(63%, 15%, 15%, .8)');
+      console.log(res);
+    },'json');
+  }
+  if(i == 3){
+    $.get('https://anapioficeandfire.com/api/houses/230', {type:'post'}, function(res){
+      $('.details p:nth-child(1)').text('Name: ' + '"' + res.name + '"');
+      $('.details p:nth-child(2)').text('Words: ' + '"A Lannister always pays his debts"');
+      $('.details p:nth-child(3)').text('Titles: ' + spacing(res.titles));
+      $('.details').css('color', 'rgba(77%, 25%, 27%, .8)');
+      console.log(res);
+    },'json');
+  }
+  if(i == 4){ 
+    $.get('https://anapioficeandfire.com/api/houses/15', {type:'post'}, function(res){
+      $('.details p:nth-child(1)').text('Name: ' + '"' + res.name + '"');
+      $('.details p:nth-child(2)').text('Words: ' + '"The Night Is Dark and Full of Terrors"');
+      $('.details p:nth-child(3)').text('Titles: ' + spacing(res.titles)); 
+      $('.details').css('color', 'rgba(42%, 25%, 19%, .8)');
+      console.log(res);
+    },'json');
+  }
+}
+
 $(document).ready(function() {
-  $('form').submit(function(event){
-  	if ( $( "#in" ).val().length > 0 ) {
-
-  		$('#weath').slideUp(100).delay(300).slideDown(100);
-  		$('#place').remove();
-   		var mycity = $('#in').val();
-   		$.get('https://api.openweathermap.org/data/2.5/weather?q=' + mycity + '&units=imperial&APPID=cf9cb3a4fc1485b6aac43b347cec47f3', function(res) {
-    	console.log(res);
-    	$('#cty').text(mycity.toUpperCase());
-    	$('#tmp').text(res.main.temp + 'ºF');
-    	},'json');
-    	event.preventDefault();
-    } 
-    else {
-    	$('#in').attr('border', 'none');
-    	$('#in').css('color', 'rgba(255, 100, 100, 1)');
-    	$('#in').attr('placeholder', 'enter a city');
-    	$('#in').css('box-shadow', '0px 0px 10px rgba(255, 100, 100, 1), 0px 0px 10px rgba(255, 100, 100, 1)');
-  		event.preventDefault();
-  	}
-
-  }); //submit
+  $(document).on('click', 'img', function(i){
+    $('.details').hide();
+    getHouse($(this).attr('id'));
+    $('.details p').css('margin', '50px 0');
+    $('.details').fadeIn(500);
+  })
 }); // ready

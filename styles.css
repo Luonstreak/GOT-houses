@@ -1,51 +1,40 @@
 * {
-	font-family: sans-serif;
 	font-weight: lighter;
 	text-transform: uppercase;
+	font-style: italic;
+}
+
+body {
+	background: url('https://wallpaperlayer.com/img/2015/9/dark-texture-background-wallpaper-5892-6160-hd-wallpapers.jpg') no-repeat center center fixed;
+	background-color: #000;
 }
 
 .container{
-	width: 400px;
-	height: 200px;
-	background-color: gray;
-	margin: 100px auto 0 auto;
-	padding: 20px;
-	border-radius: 20px;
+	width: 1200px;
+	height: 800px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.house {
+	margin: 50px 10px 0 10px;
 }
 
 img {
-	width: 100px;
-	height: 100px;
-	display: inline-block;
+	margin: 0 35px;
+	width: 220px;
+	transition: transform, .2s;
 }
 
-h1, h3, form {
+.details {
+	width: 1000px;
+	margin: 30px auto;
+	height: 300px;
+	padding: 20px;
 	text-align: center;
-	color: #FFF;
+	font-size: 1.5em;
 }
 
-
-form input, form button {
-	vertical-align: top;
-	padding: 10px;
-	margin: 0;
-	font-size: 1em;
-	color: gray;
-	box-sizing: border-box;
-}
-
-form button {
-	padding: 10px 30px;	
-	border: 2px solid white;
-	background-color: #FFF;
-
-}
-
-form button:hover {
-	background-color: gray;
-	color: #FFF;
-}
-
-#in {
-	margin-right: 10px;
+img:hover {
+	transform: scale(1.1);
 }
