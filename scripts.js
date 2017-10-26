@@ -1,34 +1,24 @@
+$(document).ready(function() {
+  $('form').submit(function(event){
+  	if ( $( "#in" ).val().length > 0 ) {
 
-function poke(attr) {	
-	$.get('https://pokeapi.co/api/v2/pokemon/' + attr + '/', function(data){
-		var myData = data;
-		function isIt (val){
-			if(val){return val.type.name;} else{return " ";}; 
-		}
-		$('.pokedex').html('<h3>' + data.name + '</h3>' + 
-	    '<img src="http://pokeapi.co/media/img/' + attr + '.png">' + 
-	    '<h5>Types</h5>' +
-	    '<ul>' +
-	      '<li>' + data.types[0].type.name + '</li>' +
-	      '<li>' + isIt(data.types[1]) + '</li>' + 
-	    '</ul>' +
-	    '<h5>Height</h5>' +
-	    '<p>' + data.height + '</p>' +
-	    '<h5>Weight</h5>' +
-	    '<p>' + data.weight + '</p>'
-	  );
+  		$('#weath').slideUp(100).delay(300).slideDown(100);
+  		$('#place').remove();
+   		var mycity = $('#in').val();
+   		$.get('https://api.openweathermap.org/data/2.5/weather?q=' + mycity + '&units=imperial&APPID=cf9cb3a4fc1485b6aac43b347cec47f3', function(res) {
+    	console.log(res);
+    	$('#cty').text(mycity.toUpperCase());
+    	$('#tmp').text(res.main.temp + 'ºF');
+    	},'json');
+    	event.preventDefault();
+    } 
+    else {
+    	$('#in').attr('border', 'none');
+    	$('#in').css('color', 'rgba(255, 100, 100, 1)');
+    	$('#in').attr('placeholder', 'enter a city');
+    	$('#in').css('box-shadow', '0px 0px 10px rgba(255, 100, 100, 1), 0px 0px 10px rgba(255, 100, 100, 1)');
+  		event.preventDefault();
+  	}
 
-	}, 'json');
-}
-
-$(document).ready(function(){
-
-	for(var i = 1; i < 152; i++){
-		$('.container').append('<img src="' + 'http://pokeapi.co/media/img/' + i + '.png/" alt="' + "pokemon" + i + '" id="' + i + '">');
-	}
-
-	$(document).on('click', 'img', function(){
-		poke($(this).attr('id'));
-	});
-
-});
+  }); //submit
+}); // ready

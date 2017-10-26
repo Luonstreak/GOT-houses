@@ -1,10 +1,13 @@
-*{
+* {
 	font-family: sans-serif;
 	font-weight: lighter;
+	text-transform: uppercase;
 }
 
 .container{
-	width: 934px;
+	width: 400px;
+	height: 200px;
+	background-color: gray;
 	margin: 100px auto 0 auto;
 	padding: 20px;
 	border-radius: 20px;
@@ -16,26 +19,33 @@ img {
 	display: inline-block;
 }
 
-.pokedex {
-	text-transform: capitalize;
+h1, h3, form {
 	text-align: center;
-	padding: 50px 0 0 0;
-	display: inline-block;
-	position: fixed;
-	top: 150px;
-	right: 300px;
-	width: 150px;
-	height: 400px;
-	background-color: #FFF;	
-	border: 20px solid red;
+	color: #FFF;
 }
 
-h3, h5 {
-	font-weight: bold;
-	margin: 5px;
+
+form input, form button {
+	vertical-align: top;
+	padding: 10px;
+	margin: 0;
+	font-size: 1em;
+	color: gray;
+	box-sizing: border-box;
 }
 
-ul {
-	list-style-type: none;
-	padding: 0;
+form button {
+	padding: 10px 30px;	
+	border: 2px solid white;
+	background-color: #FFF;
+
+}
+
+form button:hover {
+	background-color: gray;
+	color: #FFF;
+}
+
+#in {
+	margin-right: 10px;
 }
